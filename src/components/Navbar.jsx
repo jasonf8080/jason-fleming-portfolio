@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { navigation } from "../../constants";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
 
    useGSAP(() => {
      const timeline = gsap.timeline();
@@ -26,8 +28,24 @@ const Navbar = () => {
 
    })
 
+useEffect(() => {
+  if (showMenu) {
+    document.documentElement.style.overflow = "hidden"; // html
+    document.body.style.overflow = "hidden";
+  } else {
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+  };
+}, [showMenu]);
+
   return (
-    <nav className="fixed top-0 left-0 z-[100] w-full border-b border-white/10  bg-[#1a1a1a] md:bg-transparent ">
+    <>
+    <nav className="fixed top-0 left-0 z-[20] w-full border-b border-white/10  bg-[#1a1a1a] md:bg-transparent ">
       {/* Blur Layer */}
       <div className="absolute inset-0  md:backdrop-blur-md" />
 
@@ -51,11 +69,16 @@ const Navbar = () => {
           </li>
         </ul> 
 
-        <button className="md:hidden text-4xl">
+        <button 
+          onClick={() => setShowMenu(!showMenu)}
+          className="md:hidden text-4xl">
           <HiBars3BottomRight />
         </button>
       </div>
     </nav>
+
+    {showMenu && <MobileMenu showMenu={showMenu} setShowMenu={setShowMenu}/>}
+    </>
   );
 };
 
