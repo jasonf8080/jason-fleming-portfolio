@@ -56,7 +56,7 @@ useEffect(() => {
         <ul className="hidden md:flex items-center gap-4 capitalize font-semibold text-lg">
           {navigation.map((link) => (
             <li key={link.id}>
-              <a href="#">{link.id}</a>
+              <a href={link.href}>{link.id}</a>
             </li>
           ))}
 

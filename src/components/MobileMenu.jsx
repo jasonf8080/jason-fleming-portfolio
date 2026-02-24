@@ -44,7 +44,7 @@ const MobileMenu = ({ showMenu, setShowMenu }) => {
               key={link.id}
               className="w-full border-b-2 border-b-white mb-3 pl-3 py-4"
             >
-              <a href="#">{link.id}</a>
+              <a onClick={() => setShowMenu(!showMenu)} href={link.href}>{link.id}</a>
             </li>
           ))}
         </ul>

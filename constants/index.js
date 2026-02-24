@@ -94,17 +94,17 @@ const projects = [
   {
     id: "home",
     name: "Home",
-    href: "#home",
-  },
-  {
-    id: "projects",
-    name: "Projects",
-    href: "#projects",
+    href: "#hero",
   },
   {
     id: "about",
     name: "About",
     href: "#about",
+  },
+  {
+    id: "projects",
+    name: "Projects",
+    href: "#projects",
   },
   {
     id: "contact",
@@ -124,11 +124,7 @@ const projects = [
     name: "GitHub",
     href: "https://github.com/yourusername",
   },
-  {
-    id: "whatsapp",
-    name: "WhatsApp",
-    href: "https://wa.me/yourphonenumber",
-  },
+ 
 ];
 
 

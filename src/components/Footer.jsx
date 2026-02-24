@@ -37,7 +37,7 @@ const Footer = () => {
             <ul>
               {navigation.map((link) => (
                 <li className="text-lg md:text-2xl px-3 my-6 underline" key={link.id}>
-                  <a href="#">
+                  <a href={link.href}>
                     {link.id}
                   </a>
                 </li>
@@ -53,7 +53,7 @@ const Footer = () => {
             <ul>
               {socials.map((link) => (
                 <li className="text-lg md:text-2xl px-3 my-6 underline" key={link.id}>
-                  <a  href="#">
+                  <a href={link.href}>
                     {link.id}
                   </a>
                 </li>
