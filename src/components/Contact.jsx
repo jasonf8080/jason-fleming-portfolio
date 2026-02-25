@@ -9,27 +9,28 @@ const Contact = () => {
   const sectionRef = useRef(null)
   const [status, setStatus] = useState("idle");
 
-    const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("loading");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setStatus("loading");
 
-    const form = e.target;
-    const data = new FormData(form);
+  const form = e.target;
+  const formData = new FormData(form);
 
-  
+  try {
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    });
 
-    try {
-        await fetch("/", {
-        method: "POST",
-        body: data,
-        });
+    if (!res.ok) throw new Error("Bad response");
 
-        setStatus("success");
-        form.reset();
-    } catch (err) {
-        setStatus("error");
-    }
-    };
+    setStatus("success");
+    form.reset();
+  } catch (err) {
+    setStatus("error");
+  }
+};
 
   useGSAP(() => {
     const timeline = gsap.timeline({
