@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { LiaTimesSolid } from "react-icons/lia";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { MdOutlineArrowOutward } from "react-icons/md";
 import { navigation } from '../../constants';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
@@ -44,7 +45,10 @@ const MobileMenu = ({ showMenu, setShowMenu }) => {
               key={link.id}
               className="w-full border-b-2 border-b-white mb-3 pl-3 py-4"
             >
-              <a onClick={() => setShowMenu(!showMenu)} href={link.href}>{link.id}</a>
+              <a className='min-w-full flex justify-between items-center' onClick={() => setShowMenu(!showMenu)} href={link.href}>
+                {link.id}
+                <span className='text-3xl translate-y-[-5px] pb-1 mr-2'><MdOutlineArrowOutward/></span>
+                </a>
             </li>
           ))}
         </ul>
