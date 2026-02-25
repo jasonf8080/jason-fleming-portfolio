@@ -26,6 +26,13 @@ const Contact = () => {
         console.log("Form successfully submitted");
         setStatus("success");
         myForm.reset();
+
+            
+        const timeout = setTimeout(() => {
+            setStatus("idle");
+        }, 3000);
+
+        return () => clearTimeout(timeout);
       })
       .catch((error) => {
         console.error(error);
